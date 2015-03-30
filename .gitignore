@@ -58,7 +58,10 @@ DerivedData
 
 # IntelliJ file #
 #################
+# Directory Format
 .idea
+# File Format
+*.iml
 
 # Vi/Vim/Elvis/Evil #
 #####################
