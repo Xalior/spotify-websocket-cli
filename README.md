@@ -19,3 +19,13 @@ You can bypass signing in each time you by creating a .spotify-websocket-cli in 
 u = Xalior
 p = MySecretMusicalPassword
 ```
+
+Usage is pretty simple
+
+```
+./bin/spotify-websocket-cli spotify:track:73uc55BT8QAGhAi7leaYqJ
+```
+or
+```
+./bin/spotify-websocket-cli track:73uc55BT8QAGhAi7leaYqJ
+```
