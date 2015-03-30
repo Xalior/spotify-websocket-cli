@@ -1,0 +1,32 @@
+{
+  "name": "spotify-websocket-cli",
+  "description": "The spotify-webclient-cli command line interface using the WebSocket API",
+  "version": "0.1.0",
+  "author": "D. Rimron-Soutter",
+  "repository": "xalior/spotify-websocket-cli",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/xalior/spotify-websocket-cli/blob/master/LICENSE-MIT"
+    }
+  ],
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "test": "node bini/spotify-websocket-cli test"
+  },
+  "bin": {
+    "spotify-webclient-cli": "bin/spotify-webclient-cli"
+  },
+  "preferGlobal": true,
+  "dependencies": {
+  },
+  "devDependencies": {
+  },
+  "files": [
+    "bin",
+    "completion",
+    "lib"
+  ]
+}
