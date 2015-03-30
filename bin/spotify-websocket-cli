@@ -4,14 +4,14 @@
 
 // Internal libs.
 var cli = require('../lib/cli');
+var player = require('../lib/player.js');
 
 cli.name = __filename.replace(__dirname + '/', '');
 
 process.title = cli.name;
 
-var lame = require('lame');
-var Speaker = require('speaker');
 var Spotify = require('spotify-web');
+var Promise = require("bluebird");
 
 var uri;
 
@@ -41,14 +41,10 @@ Spotify.login(username, password, function (err, spotify) {
         if (err) throw err;
         console.log('Playing: %s - %s', track.artist[0].name, track.name);
 
-        // play() returns a readable stream of MP3 audio data
-        track.play()
-            .pipe(new lame.Decoder())
-            .pipe(new Speaker())
+        player.play(track)
             .on('finish', function () {
-                spotify.disconnect();
+                q.done(0);
             });
-
     });
 });
 

@@ -1,7 +1,7 @@
 {
   "name": "spotify-websocket-cli",
   "description": "The spotify-webclient-cli command line interface using the WebSocket API",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "D. Rimron-Soutter",
   "repository": "xalior/spotify-websocket-cli",
   "licenses": [
@@ -21,6 +21,8 @@
   },
   "preferGlobal": true,
   "dependencies": {
+    "bluebird": "^2.9.21",
+    "cjson": "^0.3.0",
     "commander": "^2.7.1",
     "home-config": "^0.1.0",
     "lame": "^1.2.0",
