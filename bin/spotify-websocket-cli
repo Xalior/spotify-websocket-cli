@@ -9,7 +9,6 @@ cli.name = __filename.replace(__dirname + '/', '');
 
 process.title = cli.name;
 
-
 var lame = require('lame');
 var Speaker = require('speaker');
 var Spotify = require('spotify-web');
@@ -20,7 +19,7 @@ if (cli.options.args.length) {
     var uri = cli.options.args[cli.options.args.length - 1];
 
     if (uri.indexOf(':')==-1) {
-        console.error('Did not regognise spotify URI of '+uri);
+        console.error('Did not recognise spotify URI of '+uri);
         process.exit(-1);
     }
 
@@ -41,8 +40,7 @@ Spotify.login(username, password, function (err, spotify) {
     spotify.get(uri, function (err, track) {
         if (err) throw err;
         console.log('Playing: %s - %s', track.artist[0].name, track.name);
-
-
+        
         // play() returns a readable stream of MP3 audio data
         track.play()
             .pipe(new lame.Decoder())
