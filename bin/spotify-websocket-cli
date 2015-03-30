@@ -40,7 +40,7 @@ Spotify.login(username, password, function (err, spotify) {
     spotify.get(uri, function (err, track) {
         if (err) throw err;
         console.log('Playing: %s - %s', track.artist[0].name, track.name);
-        
+
         // play() returns a readable stream of MP3 audio data
         track.play()
             .pipe(new lame.Decoder())
