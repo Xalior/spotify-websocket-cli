@@ -65,4 +65,11 @@ DerivedData
 
 # Vi/Vim/Elvis/Evil #
 #####################
+# Editor droppings...
 .*~
+
+# Node stuff #
+##############
+# The place we leave our node stuffs
+node_modules/
+
