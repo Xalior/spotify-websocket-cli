@@ -71,5 +71,5 @@ DerivedData
 # Node stuff #
 ##############
 # The place we leave our node stuffs
-node_modules/
+node_modules/*
 

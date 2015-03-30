@@ -1,0 +1,56 @@
+#!/usr/bin/env node
+
+'use strict';
+
+// Internal libs.
+var cli = require('../lib/cli');
+
+cli.name = __filename.replace(__dirname + '/', '');
+
+process.title = cli.name;
+
+
+var lame = require('lame');
+var Speaker = require('speaker');
+var Spotify = require('spotify-web');
+
+var uri;
+
+if (cli.options.args.length) {
+    var uri = cli.options.args[cli.options.args.length - 1];
+
+    if (uri.indexOf(':')==-1) {
+        console.error('Did not regognise spotify URI of '+uri);
+        process.exit(-1);
+    }
+
+    if (uri.indexOf('spotify:') != 0) {
+        uri = 'spotify:'+uri;
+    }
+} else {
+    uri = 'spotify:track:6JEK0CvvjDjjMUBFoXShNZ';
+}
+
+var username = cli.options.user;
+var password = cli.options.pass;
+
+Spotify.login(username, password, function (err, spotify) {
+    if (err) throw err;
+
+    // first get a "Track" instance from the track URI
+    spotify.get(uri, function (err, track) {
+        if (err) throw err;
+        console.log('Playing: %s - %s', track.artist[0].name, track.name);
+
+
+        // play() returns a readable stream of MP3 audio data
+        track.play()
+            .pipe(new lame.Decoder())
+            .pipe(new Speaker())
+            .on('finish', function () {
+                spotify.disconnect();
+            });
+
+    });
+});
+
